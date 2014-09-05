@@ -16,18 +16,23 @@ https://github.com/mroderick/PubSubJS
 (function (root, factory){
 	'use strict';
 
-    if (typeof define === 'function' && define.amd){
+    if (typeof Package !== 'undefined') {
+        // Meteor
+        defineGlobal();
+        PubSub = root.PubSub;
+    } else if (typeof define === 'function' && define.amd){
         // AMD. Register as an anonymous module.
         define(['exports'], factory);
-
     } else if (typeof exports === 'object'){
         // CommonJS
         factory(exports);
-
     } else {
+        defineGlobal();
+    }
+
+    function defineGlobal() {
         // Browser globals
         factory((root.PubSub = {}));
-
     }
 }(( typeof window === 'object' && window ) || this, function (PubSub){
 	'use strict';

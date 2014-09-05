@@ -2,7 +2,9 @@
 ################
 .project
 .settings/
+.idea/
 .tmp*
 jquery.pubsub.js
 /node_modules/
 /out/
+.build*
